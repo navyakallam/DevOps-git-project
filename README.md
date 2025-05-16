@@ -56,11 +56,10 @@ Once development was complete and changes were merged into the `main` branch, a 
 ## Screenshots
 
 Screenshots were captured and saved in the `screenshots/` folder. These include:
-- Git configuration in the EC2 instance  
-- Branch creation and switching  
-- Commit logs and pull request pages on GitHub  
-- Tag creation and repository status  
-- Jenkinsfile view (if included)  
+- Git Initialization in the EC2 instance  
+- Branch creations and switchings  
+- merge confirmations  
+- Tag creation   
 
 ## Outcome
 
