@@ -2,21 +2,36 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Clone Repository') {
             steps {
-                echo 'Building the project...'
+                echo 'Cloning the GitHub repository...'
+                checkout scm
             }
         }
-        stage('Test') {
+
+        stage('Build Docker Image') {
             steps {
-                echo 'Running tests...'
+                echo 'Building Docker image...'
+                sh 'docker build -t devops-git-project .'
             }
         }
-        stage('Deploy') {
+
+        stage('Run Container') {
             steps {
-                echo 'Deploying the application...'
+                echo 'Running Docker container...'
+                sh 'docker run -d -p 8080:80 --name devops-git-container devops-git-project'
             }
         }
     }
+
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check the logs.'
+        }
+    }
 }
+
 
